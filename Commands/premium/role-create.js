@@ -94,7 +94,7 @@ module.exports = {
             unicodeEmoji: roleIcon ? roleIcon : null,
             hoist: false,
             mentionable: false,
-            position: 52,
+            position: 61,
             reason: 'Создание своей роли',
         });
 

@@ -1,7 +1,7 @@
 const { ModalSubmitInteraction, EmbedBuilder } = require('discord.js');
 const { Verify } = require('../../schemas/verify');
 const { Members } = require('../../schemas/members');
-const { ROLE_RULES_ID } = require('../../config.json');
+const { ROLE_RULES_ID, INFO_CHANNEL } = require('../../config.json');
 
 module.exports = {
     id: 'verify_modal',
@@ -40,16 +40,49 @@ module.exports = {
 
             await Verify.deleteOne({ userId: member.id });
 
+            try {
+                await member.send({
+                    embeds: [
+                        new EmbedBuilder()
+                            .setColor(`#2f3136`)
+                            .setDescription(
+                                `**Поздравляю с успешной верификацией!**\n\n`
+                                + `**Жми сюда** 👉  <#${INFO_CHANNEL}>\n`
+                                + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+                            )
+                    ]
+                })
+            } catch {
+                const channel = interaction.guild.channels.cache.get(INFO_CHANNEL);
+                const message = await channel.send({
+                    content: `<@${member.id}>`,
+                    allowedMentions: { users: [member.id] },
+                    embeds: [
+                        new EmbedBuilder()
+                            .setColor(`#2f3136`)
+                            .setDescription(
+                                `**Поздравляю с успешной верификацией!**\n\n`
+                                + `**Пожалуйста прочитай информацию которая здесь написана**\n`
+                                + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+                            )
+                    ]
+                });
+
+                setTimeout(() => {
+                    message.delete();
+                }, 30000);
+            }
+
             return interaction.editReply({
                 embeds: [
                     new EmbedBuilder()
                         .setColor(`#2f3136`)
-                        .setAuthor({
-                            name: `Вы успешно прошли регистрацию`,
-                            iconURL: `https://cdn.discordapp.com/attachments/972441100251963442/1005435901301755994/52871_tips_icon.png`
-                        })
+                        .setDescription(
+                            `**Вы успешно прошли верификацию**\n`
+                            + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+                        )
                 ]
-            })
+            });
         };
 
         if (answer !== pinCode.pinCode) {
@@ -58,10 +91,13 @@ module.exports = {
                 embeds: [
                     new EmbedBuilder()
                         .setColor(`#2f3136`)
-                        .setAuthor({
-                            name: `Вы ввели не верный код. Повторите попытку`,
-                            iconURL: `https://cdn.discordapp.com/attachments/972441100251963442/1005426487995936818/52876_error_icon.png`
-                        })
+                        .setDescription(
+                            `**Повторите попытку!**\n`
+                            + `**Вы ввели не верный код**\n`
+                            + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+                        )
+
+
                 ]
             })
         };

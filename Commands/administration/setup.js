@@ -19,6 +19,7 @@ module.exports = {
                     { name: 'поиск', value: 'find' },
                     { name: 'инфо', value: 'info' },
                     { name: 'информация', value: 'information' },
+                    { name: 'секретные комнаты', value: 'secret' },
                 )
         ),
 
@@ -308,6 +309,57 @@ module.exports = {
 
                 interaction.editReply({ content: `Готово.`, })
             } break;
+
+            case 'secret': {
+                const message = await interaction.channel.send({
+                    embeds: [
+                        new EmbedBuilder()
+                            .setColor(`2f3136`)
+                            .setTitle(`Taego`)
+                            .setURL(`https://cdn.discordapp.com/attachments/973994370401448007/999308949318795324/nfuj_d.png`)
+                            .setImage(`https://cdn.discordapp.com/attachments/973994370401448007/999308949318795324/nfuj_d.png`)
+                    ],
+                    components: [
+                        new ActionRowBuilder().setComponents(
+                            new ButtonBuilder()
+                                .setURL('https://myserver.gg/ru/907628983577890886')
+                                .setEmoji('💚')
+                                .setStyle(ButtonStyle.Link),
+
+                            new ButtonBuilder()
+                                .setURL('https://cdn.discordapp.com/attachments/973994370401448007/999308949318795324/nfuj_d.png')
+                                .setLabel('Посмотреть в полном размере')
+                                .setStyle(ButtonStyle.Link)
+                        )
+                    ]
+                }); message.react('👍');
+
+                const message2 = await interaction.channel.send({
+                    embeds: [
+                        new EmbedBuilder()
+                            .setColor(`2f3136`)
+                            .setTitle(`Deston`)
+                            .setURL(`https://cdn.discordapp.com/attachments/973994370401448007/999303451941011576/Deston-goTop.png`)
+                            .setImage(`https://cdn.discordapp.com/attachments/973994370401448007/999303451941011576/Deston-goTop.png`)
+                    ],
+                    components: [
+                        new ActionRowBuilder().setComponents(
+                            new ButtonBuilder()
+                                .setURL('https://myserver.gg/ru/907628983577890886')
+                                .setEmoji('💚')
+                                .setStyle(ButtonStyle.Link),
+
+                            new ButtonBuilder()
+                                .setURL('https://cdn.discordapp.com/attachments/973994370401448007/999303451941011576/Deston-goTop.png')
+                                .setLabel('Посмотреть в полном размере')
+                                .setStyle(ButtonStyle.Link)
+                        )
+                    ]
+                }); message2.react('👍');
+
+                interaction.editReply({ content: `**Готово**` })
+
+            }
         }
     },
 };
