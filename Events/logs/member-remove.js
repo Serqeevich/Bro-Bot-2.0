@@ -1,8 +1,6 @@
-const { Client, GuildMember, WebhookClient, EmbedBuilder, AuditLogEvent } = require('discord.js');
-const { Members } = require('../../schemas/members');
-const { Streamers } = require('../../schemas/streamers');
-const { Times } = require('../../schemas/user-time')
-const { LOG_MEMBER_REMOVE, BAN_KICK_MUTE_CHANNEL } = require('../../config.json');
+const { Client, GuildMember, WebhookClient, EmbedBuilder, AuditLogEvent, User } = require('discord.js');
+const { Times } = require('../../schemas/user-time');
+const { LOG_MEMBER_REMOVE } = require('../../config.json');
 const { toNormalTime } = require('../../utils/toNormalTime');
 const moment = require('moment');
 moment.locale('ru');
@@ -19,8 +17,6 @@ module.exports = {
         const { guild, user } = member;
         const days = moment().to(member.joinedAt, true);
         const time = await Times.findOne({ User: member.id });
-
-        await Streamers.findOneAndDelete({ userId: member.id })
 
         new WebhookClient({ url: LOG_MEMBER_REMOVE })
             .send({
