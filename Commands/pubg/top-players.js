@@ -97,14 +97,8 @@ module.exports = {
 
             case 'SQUAD TPP': {
 
-                players = players.filter(function BigEnough(v) {
-                    return v.stats.squadTppAdr
-                        > 0
-                });
-
-                players = players.sort(function (a, b) {
-                    return b.stats.squadTppAdr - a.stats.squadTppAdr;
-                });
+                players = players.filter(function BigEnough(v) { return v.stats.squadTppAdr > 0 });
+                players = players.sort(function (a, b) { return b.stats.squadTppAdr - a.stats.squadTppAdr; });
                 players = players.slice(0, 10)
 
                 players.forEach(p => {

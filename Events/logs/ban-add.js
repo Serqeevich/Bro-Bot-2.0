@@ -7,7 +7,6 @@ module.exports = {
     name: 'guildBanAdd',
 
     async execute(ban) {
-        await Streamers.findOneAndDelete({ userId: member.id });
 
         const fetchedLogs = await ban.guild.fetchAuditLogs({
             limit: 1,

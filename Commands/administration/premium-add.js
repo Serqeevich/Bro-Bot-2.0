@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, CommandInteraction, EmbedBuilder, PermissionFlagsBits } = require("discord.js");
+const { SlashCommandBuilder, CommandInteraction, EmbedBuilder, PermissionFlagsBits, Colors } = require("discord.js");
 const { Premium } = require('../../schemas/premium');
 const { PREMIUM_ROLE_ID } = require('../../config.json');
 
@@ -21,7 +21,16 @@ module.exports = {
                 { name: '6 месяцев', value: '6 месяцев' },
                 { name: 'на год', value: '1 год' },
             )
-        ),
+        )
+        .addStringOption(option => option
+            .setName('подарок')
+            .setDescription(`Указать в случае если prenium в подарок.`)
+            .setChoices(
+                { name: 'да', value: 'в подарок' },
+                { name: 'нет', value: ' ' }
+            )
+        )
+    ,
 
     /**
      * 
@@ -34,6 +43,12 @@ module.exports = {
 
         const user = options.getMember('участник');
         const premiumPlan = options.getString('тариф');
+        const gift = options.getString('подарок');
+
+        const db = await Premium.findOne({ userId: user.id })
+        if (db) {
+            return interaction.reply({ content: `У участника ${user} уже есть Premium подписка.`, ephemeral: true })
+        }
 
         await Premium.create({
             username: user.user.username,
@@ -51,7 +66,7 @@ module.exports = {
                         .setColor(`#2f3136`)
                         .setDescription(
                             `**Большое спасибо за поддержку** 💛\n\n`
-                            + `**Вам выдан Premium на ${premiumPlan}**\n\n`
+                            + `**Вам выдан Premium на ${premiumPlan} ${gift ? gift : ''}**\n\n`
                             + `_Теперь вам доступны premium команды бота и дополнительные возможности_\n`
                             + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
                         ).setTimestamp()
@@ -63,6 +78,15 @@ module.exports = {
         user.roles.add(PREMIUM_ROLE_ID)
 
 
-        interaction.reply({ content: `Done`, ephemeral: true })
+        interaction.reply({
+            embeds: [
+                new EmbedBuilder()
+                    .setColor(Colors.Gold)
+                    .setDescription(
+                        `**Участнику ${user} выдан Premium на ${premiumPlan} ${gift ? gift : ''}**\n`
+                        + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+                    )
+            ]
+        })
     },
 };

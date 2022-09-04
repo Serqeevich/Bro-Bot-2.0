@@ -62,6 +62,6 @@ module.exports = {
         } catch { }
 
 
-        interaction.reply({ content: `Done`, ephemeral: true })
+        interaction.reply({ content: `**Участнику ${user} удален Premium**`, ephemeral: true })
     },
 };

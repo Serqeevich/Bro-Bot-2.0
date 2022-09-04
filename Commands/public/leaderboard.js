@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, CommandInteraction, EmbedBuilder } = require("discord.js");
+const { SlashCommandBuilder, CommandInteraction, EmbedBuilder, PermissionFlagsBits } = require("discord.js");
 const { Times } = require('../../schemas/user-time');
 const { toNormalTime } = require('../../utils/toNormalTime')
 
@@ -16,14 +16,14 @@ module.exports = {
         const { guild } = interaction;
         let users = await Times.find({}).sort({ Time: -1 })
 
-        users = users.slice(0, 50)
+        users = users.slice(0, 20)
 
         let i = 1
         let text = ''
 
         users.forEach(async u => {
             const member = guild.members.cache.get(u.User)
-            if (member) {
+            if (member && !member.permissions.has(PermissionFlagsBits.ModerateMembers)) {
                 text += `**${i++}.** **${member.user.username}**  - ${toNormalTime(u.Time)}\n` //<@${u.User}>
             };
         })

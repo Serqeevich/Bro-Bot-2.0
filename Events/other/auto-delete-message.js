@@ -15,7 +15,7 @@ module.exports = {
 
         if (author.bot) return;
 
-        if (member.permissions.has(PermissionFlagsBits.Administrator) || member.permissions.has(PermissionFlagsBits.ModerateMembers)) return;
+        if (member.permissions.has(PermissionFlagsBits.ModerateMembers)) return;
 
         const findChannel = guild.channels.cache.get(FIND_CHANNEL_ID);
 
@@ -31,6 +31,6 @@ module.exports = {
                     ]
                 })
             } catch (err) { }
-        }
-    }
-}
+        };
+    },
+};

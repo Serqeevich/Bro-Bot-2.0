@@ -3,7 +3,7 @@ const { SlashCommandBuilder, CommandInteraction, Client, PermissionFlagsBits, } 
 module.exports = {
     category: "developer",
     data: new SlashCommandBuilder()
-        .setName('emit')
+        .setName('emit-events')
         .setDescription('Эмитация событий.')
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addStringOption((option) =>

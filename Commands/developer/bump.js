@@ -3,7 +3,7 @@ const { SlashCommandBuilder, CommandInteraction, EmbedBuilder, PermissionFlagsBi
 module.exports = {
     category: "developer",
     data: new SlashCommandBuilder()
-        .setName('bump')
+        .setName('emit-bump')
         .setDescription('emit server bump...')
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
     /**
@@ -21,5 +21,6 @@ module.exports = {
                     .setDescription(`[Top Discord Servers](https://myserver.gg/)\nServer bumped by <@${interaction.member.id}> 👍\n[+4 Bonus points]`)
             ],
         });
+
     },
 };
