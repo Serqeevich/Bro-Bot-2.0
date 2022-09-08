@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, CommandInteraction, EmbedBuilder } = require('discord.js');
+const { ROLE_RULES_ID } = require('../../config.json');
 
 module.exports = {
     category: 'public',
@@ -15,8 +16,21 @@ module.exports = {
      * @param {CommandInteraction} interaction 
      */
     async execute(interaction) {
-        const { options, member } = interaction;
+        const { options, member, guild } = interaction;
         const role = options.getRole('role');
+
+        if (role == guild.roles.everyone || role == ROLE_RULES_ID) {
+            return interaction.reply({
+                embeds: [
+                    new EmbedBuilder()
+                        .setColor(`#2f3136`)
+                        .setDescription(
+                            `**Эту роль имеют все участники сообщества**\n`
+                            + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`
+                        )
+                ]
+            })
+        };
 
         let description = `**Участники с ролью ${role}**\n\n`
 

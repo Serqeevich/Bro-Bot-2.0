@@ -16,10 +16,9 @@ module.exports = {
 
         db.forEach(member => {
             const channel = interaction.guild.channels.cache.get(member.channelId)
-            text += `**${i++}.** <@${member.userId}> - ${channel} <t:${parseInt(member.createdAt / 1000)}:R>\n`
+            text += `**${i++}.** ${channel} - _владелец_ <@${member.userId}>\n_Создана:_ <t:${parseInt(member.createdAt / 1000)}:R> _Активность:_ <t:${parseInt(member.lastActivity / 1000)}:R>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
         })
 
-        text += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
 
         interaction.reply({
             embeds: [
@@ -34,7 +33,7 @@ module.exports = {
                     })
                     .setTimestamp()
 
-            ], ephemeral: true
+            ]
         })
     }
 }

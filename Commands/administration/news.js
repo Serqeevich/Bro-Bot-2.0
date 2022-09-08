@@ -18,6 +18,10 @@ module.exports = {
             .setRequired(true)
         )
         .addStringOption(option => option
+            .setName('строка')
+            .setDescription('Новая строчка.')
+        )
+        .addStringOption(option => option
             .setName('url')
             .setDescription('Вставьте ссылку на ресурс.')
         ),
@@ -31,10 +35,19 @@ module.exports = {
         const { guild, options } = interaction;
         const channel = guild.channels.cache.get(NEWS_CHANNLE_ID);
         const text = options.getString('сообщение');
+        const text2 = options.getString('строка');
+
         const attachment = new Attachment(options.getAttachment('вложение'))
         const url = options.getString('url');
 
-        let description = `**Приветствую!**\n\n${text}\n\n<@&${ROLE_NEWS_NOTIFY}>\n${url ? url : ''}>` 
+        interaction.deferReply({ ephemeral: true })
+
+        let description =
+            `**Приветствую!**\n\n`
+            + `${text}\n`
+            + `${text2 ? text2 : ''}\n\n`
+            + `<@&${ROLE_NEWS_NOTIFY}>\n`
+            + `${url ? url : ''}`
 
         const message = await channel.send({
             content: description,
@@ -43,7 +56,7 @@ module.exports = {
         })
         message.react('💛')
 
-        interaction.reply({ content: `✅ | **Сообщение отправлено.**`, ephemeral: true })
+        interaction.editReply({ content: `✅ | **Сообщение отправлено.**`, ephemeral: true })
 
     },
 };

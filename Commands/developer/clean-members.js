@@ -28,6 +28,6 @@ module.exports = {
             };
         });
 
-        interaction.reply({ content: `Очистка заверешена.\nУдалено ${dbBefore - dbAfter} участников`, ephemeral: true })
+        interaction.reply({ content: `Очистка заверешена.\nУдалено участников`, ephemeral: true })
     },
 };

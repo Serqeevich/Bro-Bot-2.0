@@ -14,9 +14,6 @@ module.exports = {
 
         try {
             const check = await Rooms.findOne({ channelId: channel.id });
-            const member = guild.members.cache.get(check.userId)
-            //member.send({ content: `**Ваш канал \` ${check.channelName} \` удален из-за неактивности.**` }).catch(console.error())
-            member.send({ embeds: [new EmbedBuilder().setColor(`#2f3136`).setDescription(`**Ваш канал \` ${check.channelName} \` удален из-за неактивности**\n` + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`)] }).catch(console.error())
             check.delete();
 
         } catch { }

@@ -59,6 +59,8 @@ client.handleComponents();
 client.connect();
 client.bump();
 client.twitch();
+//client.premium();
+client.roomsActivity();
 
 
 client.login(process.env.token);

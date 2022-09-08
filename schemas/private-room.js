@@ -10,6 +10,7 @@ const privateRoomSchema = new mongoose.Schema({
     channelName: String,
     channelId: String,
     users: Array,
+    lastActivity: String,
 }, {
     timestamps: true
 });

@@ -14,7 +14,7 @@ module.exports = {
 
         if (message.author.bot) return;
 
-        if (message.member.permissions.has(PermissionFlagsBits.ModerateMembers)) return;
+        if (message?.member?.permissions?.has(PermissionFlagsBits.ModerateMembers)) return;
 
         if (message.member.roles.cache.has(Level_5) || message.member.roles.cache.has(PREMIUM_ROLE_ID)) return;
 
