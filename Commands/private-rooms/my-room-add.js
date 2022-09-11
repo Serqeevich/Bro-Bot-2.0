@@ -51,8 +51,7 @@ module.exports = {
                     new EmbedBuilder()
                         .setColor(`#2f3136`)
                         .setDescription(`**<@${newUser.id}> уже имеет доступ к вашему каналу <#${info.channelId}>**`)
-                ],
-                ephemeral: true
+                ]
             })
         };
 
@@ -78,7 +77,7 @@ module.exports = {
                 new EmbedBuilder()
                     .setColor(`#2f3136`)
                     .setDescription(`**<@${newUser.id}> получил доступ к вашему каналу <#${info.channelId}>**`)
-            ], ephemeral: true
+            ]
         })
 
     },

@@ -64,8 +64,7 @@ module.exports = {
                 new EmbedBuilder()
                     .setColor(`#2f3136`)
                     .setDescription(`**Участнику ${oldUser} закрыт доступ к вашей комнате**`)
-            ],
-            ephemeral: true
+            ]
         })
     },
 };

@@ -64,7 +64,7 @@ module.exports = {
             //Авто-создание канала TPP SQUAD
             if (newState.channel?.id == TPP_CHANNEL_ID) {
                 await newState.guild.channels.create({
-                    name: `🥇│TPP SQUAD`,
+                    name: `🥇︰TPP SQUAD`,
                     type: ChannelType.GuildVoice,
                     userLimit: 4,
                     parent: TPP_CATEGORY_ID,
@@ -75,7 +75,7 @@ module.exports = {
             //Авто-создание канала FPP SQUAD
             if (newState.channel?.id == FPP_CHANNEL_ID) {
                 await newState.guild.channels.create({
-                    name: `🥈│FPP SQUAD`,
+                    name: `🥈︰FPP SQUAD`,
                     type: ChannelType.GuildVoice,
                     userLimit: 4,
                     parent: FPP_CATEGORY_ID,
@@ -86,7 +86,7 @@ module.exports = {
             //Авто-создание канала Duo
             if (newState.channel?.id == DUO_CHANNEL_ID) {
                 await newState.guild.channels.create({
-                    name: `🥈│Duo`,
+                    name: `🥈︰Duo`,
                     type: ChannelType.GuildVoice,
                     userLimit: 2,
                     parent: DUO_CATEGORY_ID,
@@ -98,7 +98,7 @@ module.exports = {
                 const data = await User.findOne({ discordId: newState.member.id });
                 const tier = data?.stats?.currentTierFpp;
                 const subTier = data?.stats?.currentSubTierFpp;
-                const name = `🏅│${tier ? tier : 'unranked'} ` + `${subTier ? subTier : ' '}`
+                const name = `🏅︰${tier ? tier : 'unranked'} ` + `${subTier ? subTier : ' '}`
                 await newState.guild.channels.create({
                     name: name,
                     type: ChannelType.GuildVoice,
