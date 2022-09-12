@@ -27,12 +27,14 @@ module.exports = {
         if (!db) return interaction.reply({ content: "**Такая комната не найдена в базе данных**", ephemeral: true });
 
         const channel = guild.channels.cache.get(db.channelId)
-        console.log(channel)
 
-        await channel.delete();
+        try {
+            await channel.delete();
+        } catch { }
+
         await db.delete();
 
-        interaction.reply({ content: '**Комната удалена из баззы данных**', ephemeral: true })
+        interaction.reply({ content: '**Комната удалена из базы данных**', ephemeral: true })
 
     },
 };
