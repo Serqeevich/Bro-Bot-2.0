@@ -18,9 +18,6 @@ const client = new Client({
         GatewayIntentBits.GuildVoiceStates,
         GatewayIntentBits.GuildWebhooks,
         GatewayIntentBits.MessageContent,
-        GatewayIntentBits.DirectMessages,
-        GatewayIntentBits.DirectMessageReactions,
-        GatewayIntentBits.DirectMessageTyping,
     ],
 });
 
@@ -59,7 +56,6 @@ client.handleComponents();
 client.connect();
 client.bump();
 client.twitch();
-//client.premium();
 client.roomsActivity();
 
 
