@@ -44,7 +44,7 @@ for (const folder of functionFolders) {
 // client.player = new Player(client, {
 //     ytdlOptions: {
 //         quality: "highestaudio",
-//         highWaterMark: 1 << 25
+//         highWaterMark: 1 << 25,
 //     }
 // });
 
