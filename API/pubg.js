@@ -46,6 +46,7 @@ const getPlayerStats = async (player) => {
         const playerUrl = `/players?filter[playerNames]=${player}`;
         const { data: { data }, } = await pubg.get(playerUrl);
         const accountId = data[0].id;
+        console.log(accountId)
 
 
         const rankedData = await getRankedData(accountId, seasonId);

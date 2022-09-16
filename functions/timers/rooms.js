@@ -1,5 +1,5 @@
 const { EmbedBuilder, WebhookClient } = require('discord.js')
-const { GUILD_ID, BAN_KICK_MUTE_CHANNEL } = require('../../config.json');
+const { GUILD_ID, BAN_KICK_MUTE_CHANNEL, ROLE_ADMINISTRATOR } = require('../../config.json');
 
 const CronJob = require('cron').CronJob;
 const { Rooms } = require('../../schemas/private-room');
@@ -20,6 +20,10 @@ module.exports = async (client) => {
                     const guild = client.guilds.cache.get(GUILD_ID);
                     const member = guild.members.cache.get(room.userId);
                     const channel = guild.channels.cache.get(room.channelId);
+
+                    if (member.roles.cache.has(ROLE_ADMINISTRATOR)) {
+                        return;
+                    };
 
                     try {
                         await member.send({
@@ -50,7 +54,7 @@ module.exports = async (client) => {
                     await channel.delete();
                     await room.delete();
 
-                } else { return console.log(`not today`) }
+                } else { return }
             })
         });
 

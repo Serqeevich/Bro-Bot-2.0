@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, CommandInteraction, Embed, EmbedBuilder, ChannelType } = require("discord.js");
 const { ROLE_FIND_NOTIFY, FIND_CHANNEL_ID } = require('../../config.json');
+const { User } = require('../../schemas/pubg-player');
 
 module.exports = {
     category: 'public',
@@ -8,7 +9,9 @@ module.exports = {
         .setDescription('Создать приглашение для вашего голосового канала.')
         .addStringOption(option => option
             .setName('комментарий')
-            .setDescription('Вашш комментарий.')
+            .setDescription('Ваш комментарий.')
+            .setMinLength(0)
+            .setMaxLength(500)
             .setRequired(true)
         ),
     /**
@@ -99,9 +102,9 @@ module.exports = {
             channel.members.map(async (user) => {
 
                 if (content.length > 1000 || slotsCount > 10) {
-                    content += `🔗 и еще ${channel.userLimit - slotsCount + 1} свободных мест.\n`
+                    content += `🔗 и еще ${channel.userLimit - slotsCount + 1} свободных мест\n`
                 } else {
-                    content += `🪂 <@${user.id}> \n`
+                    content += `🪂 <@${user.id}> ${db.pubgNickname}\n`
                     slotsCount++
                 }
             })
@@ -119,7 +122,7 @@ module.exports = {
             };
 
             content += `\n**[Подключиться:](${invite})  ${channel}**\n`
-            content += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+            content += `[━━━━━━━━━━━━━━━━━━━━━━━━━━━━](${invite})`
 
             const embed = new EmbedBuilder()
                 .setColor(`#2f3136`)
