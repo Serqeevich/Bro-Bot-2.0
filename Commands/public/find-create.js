@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, CommandInteraction, Embed, EmbedBuilder, ChannelType } = require("discord.js");
 const { ROLE_FIND_NOTIFY, FIND_CHANNEL_ID } = require('../../config.json');
-const { User } = require('../../schemas/pubg-player');
 
 module.exports = {
     category: 'public',
@@ -104,7 +103,7 @@ module.exports = {
                 if (content.length > 1000 || slotsCount > 10) {
                     content += `🔗 и еще ${channel.userLimit - slotsCount + 1} свободных мест\n`
                 } else {
-                    content += `🪂 <@${user.id}> ${db.pubgNickname}\n`
+                    content += `🪂 <@${user.id}>\n`
                     slotsCount++
                 }
             })
