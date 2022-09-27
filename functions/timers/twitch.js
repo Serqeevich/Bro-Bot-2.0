@@ -84,7 +84,7 @@ module.exports = (client) => {
                     allowedMentions: { roles: [ROLE_STREAM_NOTIFY] }
                 });
 
-                await member.roles.add(ROLE_LIVE_STREAM)
+                await member?.roles?.add(ROLE_LIVE_STREAM)
                 chan.status = 'online';
                 chan.save();
             });

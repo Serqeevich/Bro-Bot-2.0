@@ -28,7 +28,7 @@ module.exports = {
                             iconURL: member.displayAvatarURL({ forceStatic: true })
                         })
                         .setDescription(
-                            `**Никнейм**: ${member.user.username}\n`
+                            `**Участник**: <@${member.id}>\n`
                             + `**ID**: ${member.id}\n`
                             + `**Время в голосовых**: ${toNormalTime(time?.Time ? time?.Time : '0')}\n`
                             + `**Пробыл на сервере**: ${days}\n`
