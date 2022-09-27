@@ -30,7 +30,7 @@ module.exports = (client) => {
                 let StreamData = await getStreamsData(chan.channelName, process.env.twitch_clientID, authKey.value);
 
                 if (StreamData.data.length == 0) {
-                    member.roles.remove(ROLE_LIVE_STREAM)
+                    member?.roles?.remove(ROLE_LIVE_STREAM)
                     chan.status = 'offline';
                     chan.save();
                     return;
