@@ -20,6 +20,7 @@ module.exports = {
                     { name: 'инфо', value: 'info' },
                     { name: 'информация', value: 'information' },
                     { name: 'секретные комнаты', value: 'secret' },
+                    { name: 'challenge', value: 'challenge' },
                 )
         ),
 
@@ -359,6 +360,20 @@ module.exports = {
 
                 interaction.editReply({ content: `**Готово**` })
 
+            };
+
+            case 'challenge' : {
+                interaction.channel.send({
+                    content: 'test',
+                    components: [
+                        new ActionRowBuilder().addComponents(
+                            new ButtonBuilder()
+                            .setCustomId('challenge')
+                            .setStyle(ButtonStyle.Success)
+                            .setLabel('TESt')
+                        )
+                    ]
+                })
             }
         }
     },

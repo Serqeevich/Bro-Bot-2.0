@@ -41,8 +41,6 @@ module.exports = {
         };
 
         await Streamers({
-            userName: 'without-discord',
-            userId: 'undefined',
             channelName: channelName,
             link: url,
             status: null,

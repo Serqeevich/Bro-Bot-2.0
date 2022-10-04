@@ -29,7 +29,7 @@ module.exports = {
                 default : status = '🔴'
             };
 
-            description += `${status} **${i++}.** <@${streamer.userId}> - [${streamer.channelName}](${streamer.link}) <t:${parseInt(streamer.updatedAt / 1000)}:R>\n`
+            description += `${status} **${i++}.** <@${streamer.userId ? streamer.userId : 'Без дискорда'}> - [${streamer.channelName}](${streamer.link}) <t:${parseInt(streamer.updatedAt / 1000)}:R>\n`
 
         });
         description += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
