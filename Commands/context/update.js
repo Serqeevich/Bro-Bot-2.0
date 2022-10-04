@@ -17,12 +17,10 @@ module.exports = {
 
     async execute(interaction) {
         await interaction.deferReply({ ephemeral: true })
-        const { guild, member } = interaction;
+        const { guild, member, targetId, targetMember } = interaction;
 
+        const data = await User.findOne({ discordId: targetId });
 
-
-        const data = await User.findOne({ discordId: interaction.targetId });
-        console.log(data)
         if (!data) {
             return interaction.editReply({ embeds: [new EmbedBuilder().setColor(`#2f3136`).setDescription(`**🚫 Участник не зарегистрирован.**`)] });
         };
@@ -41,7 +39,7 @@ module.exports = {
                 data.updatedAt = new Date();
                 data.save();
 
-                await addStatsRoles(member, data.stats)
+                await addStatsRoles(targetMember, data.stats)
 
                 interaction.editReply({
                     embeds: [
