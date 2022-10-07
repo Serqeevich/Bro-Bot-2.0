@@ -41,6 +41,7 @@ module.exports = {
         };
 
         await Streamers({
+            userId: channelName,
             channelName: channelName,
             link: url,
             status: null,
