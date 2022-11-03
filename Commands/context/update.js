@@ -6,7 +6,7 @@ const { User } = require('../../schemas/pubg-player');
 module.exports = {
     category: 'pubg',
     data: new ContextMenuCommandBuilder()
-        .setName('обновить статистику')
+        .setName('Update stat')
         .setType(ApplicationCommandType.User)
         .setDefaultMemberPermissions(PermissionFlagsBits.ModerateMembers)
     ,

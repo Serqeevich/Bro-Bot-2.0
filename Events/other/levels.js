@@ -30,22 +30,22 @@ module.exports = {
                 const check = await isAlreadyRole(member, Level_1);
                 if (check) return
                 await oldState.member.roles.add(Level_1)
-                
-                channel.send({
-                    content: `${oldState.member}`,
-                    allowedMentions: { users: [oldState.member.id] },
-                    embeds: [
-                        new EmbedBuilder()
-                            .setColor(`#2f3136`)
-                            .setThumbnail('https://cdn.discordapp.com/attachments/972441100251963442/1014799557860806696/happy-birthday-cat.gif')
-                            .setDescription(
-                                `**Поздравляю!**\n`
-                                + `Вы получили <@&${Level_1}>\n\n`
-                                + `_Теперь ваши GIF будут отображаться_\n`
-                                + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
-                            )
-                    ]
-                })
+
+                // channel.send({
+                //     content: `${oldState.member}`,
+                //     allowedMentions: { users: [oldState.member.id] },
+                //     embeds: [
+                //         new EmbedBuilder()
+                //             .setColor(`#2f3136`)
+                //             .setThumbnail('https://cdn.discordapp.com/attachments/972441100251963442/1014799557860806696/happy-birthday-cat.gif')
+                //             .setDescription(
+                //                 `**Поздравляю!**\n`
+                //                 + `Вы получили <@&${Level_1}>\n\n`
+                //                 + `_Теперь ваши GIF будут отображаться_\n`
+                //                 + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+                //             )
+                //     ]
+                // })
             };
 
 
@@ -56,21 +56,21 @@ module.exports = {
                 await oldState.member.roles.remove(Level_1)
                 await oldState.member.roles.add(Level_2)
 
-                channel.send({
-                    content: `${oldState.member}`,
-                    allowedMentions: { users: [oldState.member.id] },
-                    embeds: [
-                        new EmbedBuilder()
-                            .setColor(`#2f3136`)
-                            .setThumbnail('https://cdn.discordapp.com/attachments/972441100251963442/1014799155249557534/funny-woohoo.gif')
-                            .setDescription(
-                                `**Поздравляю!**\n`
-                                + `Вы получили <@&${Level_2}>\n\n`
-                                + `_Теперь вы можете запускать стримы_\n`
-                                + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
-                            )
-                    ]
-                })
+                // channel.send({
+                //     content: `${oldState.member}`,
+                //     allowedMentions: { users: [oldState.member.id] },
+                //     embeds: [
+                //         new EmbedBuilder()
+                //             .setColor(`#2f3136`)
+                //             .setThumbnail('https://cdn.discordapp.com/attachments/972441100251963442/1014799155249557534/funny-woohoo.gif')
+                //             .setDescription(
+                //                 `**Поздравляю!**\n`
+                //                 + `Вы получили <@&${Level_2}>\n\n`
+                //                 + `_Теперь вы можете запускать стримы_\n`
+                //                 + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+                //             )
+                //     ]
+                // })
             };
 
             if (time >= threeHour && time < fourHour) {
@@ -79,21 +79,21 @@ module.exports = {
                 await oldState.member.roles.remove(Level_2)
                 await oldState.member.roles.add(Level_3)
 
-                channel.send({
-                    content: `${oldState.member}`,
-                    allowedMentions: { users: [oldState.member.id] },
-                    embeds: [
-                        new EmbedBuilder()
-                            .setColor(`#2f3136`)
-                            .setThumbnail('https://cdn.discordapp.com/attachments/972441100251963442/1014798286084919297/baby-dance.gif')
-                            .setDescription(
-                                `**Поздравляю!**\n`
-                                + `Вы получили <@&${Level_3}>\n\n`
-                                + `_Теперь вы можете прикреплять файлы в чатах_\n`
-                                + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
-                            )
-                    ]
-                })
+                // channel.send({
+                //     content: `${oldState.member}`,
+                //     allowedMentions: { users: [oldState.member.id] },
+                //     embeds: [
+                //         new EmbedBuilder()
+                //             .setColor(`#2f3136`)
+                //             .setThumbnail('https://cdn.discordapp.com/attachments/972441100251963442/1014798286084919297/baby-dance.gif')
+                //             .setDescription(
+                //                 `**Поздравляю!**\n`
+                //                 + `Вы получили <@&${Level_3}>\n\n`
+                //                 + `_Теперь вы можете прикреплять файлы в чатах_\n`
+                //                 + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+                //             )
+                //     ]
+                // })
             };
 
             if (time >= fourHour && time < fiveHour) {
@@ -102,21 +102,21 @@ module.exports = {
                 await oldState.member.roles.remove(Level_3)
                 await oldState.member.roles.add(Level_4)
 
-                channel.send({
-                    content: `${oldState.member}`,
-                    allowedMentions: { users: [oldState.member.id] },
-                    embeds: [
-                        new EmbedBuilder()
-                            .setColor(`#2f3136`)
-                            .setThumbnail('https://cdn.discordapp.com/attachments/972441100251963442/1014797468329836564/will-ferrell-yes.gif')
-                            .setDescription(
-                                `**Поздравляю!**\n`
-                                + `Вы получили <@&${Level_4}>\n\n`
-                                + `_Теперь вы можете изменять себе никнейм_\n`
-                                + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
-                            )
-                    ]
-                })
+                // channel.send({
+                //     content: `${oldState.member}`,
+                //     allowedMentions: { users: [oldState.member.id] },
+                //     embeds: [
+                //         new EmbedBuilder()
+                //             .setColor(`#2f3136`)
+                //             .setThumbnail('https://cdn.discordapp.com/attachments/972441100251963442/1014797468329836564/will-ferrell-yes.gif')
+                //             .setDescription(
+                //                 `**Поздравляю!**\n`
+                //                 + `Вы получили <@&${Level_4}>\n\n`
+                //                 + `_Теперь вы можете изменять себе никнейм_\n`
+                //                 + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+                //             )
+                //     ]
+                // })
             };
 
             if (time >= fiveHour) {
@@ -125,21 +125,21 @@ module.exports = {
                 await oldState.member.roles.remove(Level_4)
                 await oldState.member.roles.add(Level_5)
 
-                channel.send({
-                    content: `${oldState.member}`,
-                    allowedMentions: { users: [oldState.member.id] },
-                    embeds: [
-                        new EmbedBuilder()
-                            .setColor(`#2f3136`)
-                            .setThumbnail('https://cdn.discordapp.com/attachments/972441100251963442/1014548320338837504/champagne-hurrah.gif')
-                            .setDescription(
-                                `**Поздравляю!**\n`
-                                + `Вы получили <@&${Level_5}>\n\n`
-                                + `_Теперь вы можете публиковать ссылки_\n`
-                                + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
-                            )
-                    ]
-                })
+                // channel.send({
+                //     content: `${oldState.member}`,
+                //     allowedMentions: { users: [oldState.member.id] },
+                //     embeds: [
+                //         new EmbedBuilder()
+                //             .setColor(`#2f3136`)
+                //             .setThumbnail('https://cdn.discordapp.com/attachments/972441100251963442/1014548320338837504/champagne-hurrah.gif')
+                //             .setDescription(
+                //                 `**Поздравляю!**\n`
+                //                 + `Вы получили <@&${Level_5}>\n\n`
+                //                 + `_Теперь вы можете публиковать ссылки_\n`
+                //                 + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+                //             )
+                //     ]
+                // })
             };
 
         };
