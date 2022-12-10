@@ -36,7 +36,7 @@ module.exports = (client) => {
                         new EmbedBuilder()
                             .setColor('Random')
                             .setDescription(
-                                `Пора для /bump\n`
+                                `**Пора для /bump**\n`
                                 + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
                             )
 

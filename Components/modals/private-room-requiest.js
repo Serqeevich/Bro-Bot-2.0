@@ -143,6 +143,7 @@ module.exports = {
                         channelName: newChannel.name,
                         channelId: newChannel.id,
                         users: Array,
+                        lastActivity: Date.now(),
                     });
                 };
 
@@ -160,7 +161,7 @@ module.exports = {
                                     .setDescription(
                                         `**Запрос на создание комнаты \` ${roomName} \` отклонен**\n`
                                         + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
-                                        )
+                                    )
                                     .setFooter({ text: `🔴 Администратор ${executor}` })
                             ]
                         });
@@ -176,7 +177,7 @@ module.exports = {
                                     .setDescription(
                                         `**Запрос на создание комнаты \` ${roomName} \` отклонен администратором ${executor}**\n`
                                         + `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
-                                        )
+                                    )
                             ],
                             allowedMentions: { users: [member.id] },
 
